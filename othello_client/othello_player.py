@@ -62,7 +62,7 @@ class OthelloPlayer():
                         while not turn_info['game_over']:
                             if turn_info['turn']:
                                 print('SCORE ', turn_info['score'])
-                                row, col = AI_MOVE(turn_info['board'])
+                                row, col = AI_MOVE(turn_info['board'], self.current_symbol)
                                 move = requests.post(
                                     host_name + '/player/move?session_name=' + self.session_name + '&player_name=' + self.username + '&match_id=' +
                                     match_info['match'] + '&row=' + str(row) + '&col=' + str(col))
