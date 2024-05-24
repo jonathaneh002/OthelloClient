@@ -2,6 +2,7 @@ import requests
 import random
 import sys
 import time
+from intelligence import AI_MOVE
 
 ### Public IP Server
 ### Testing Server
@@ -61,7 +62,7 @@ class OthelloPlayer():
                         while not turn_info['game_over']:
                             if turn_info['turn']:
                                 print('SCORE ', turn_info['score'])
-                                row, col = self.AI_MOVE(turn_info['board'])
+                                row, col = AI_MOVE(turn_info['board'])
                                 move = requests.post(
                                     host_name + '/player/move?session_name=' + self.session_name + '&player_name=' + self.username + '&match_id=' +
                                     match_info['match'] + '&row=' + str(row) + '&col=' + str(col))
@@ -89,10 +90,7 @@ class OthelloPlayer():
 
 
     ### Solo modiquen esta función
-    def AI_MOVE(self, board):
-        row = random.randint(0, 7)
-        col = random.randint(0, 7)
-        return (row, col)
+
 
 if __name__ == '__main__':
     script_name = sys.argv[0]
